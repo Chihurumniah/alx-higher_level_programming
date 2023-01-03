@@ -55,9 +55,9 @@ class Rectangle:
     def __str__(self):
         empty_string = ""
 
-    if self.__width == 0 or self.__height == 0:
-        return (empty_string)
-    return ((('#' * self.width) + "\n") * self.height)[:-1]
+        if self.__width == 0 or self.__height == 0:
+            return (empty_string)
+        return ((('#' * self.width) + "\n") * self.height)[:-1]
 
     """ Returns an “official” string representation of an instance """
     def __repr__(self):
