@@ -1,117 +1,63 @@
 #!/usr/bin/python3
-
 """
-
-This is the "Rectangle"  module.
-
-This module provides a Rectangle class.
-
+New class Rectangle
 """
-
-
-
 
 
 class Rectangle:
+    """ Defines a rectangle """
 
-        """A Rectangle class with attributes width and height, and
+    def __init__(self, width=0, height=0):
+        self.width = width
+        self.height = height
 
-            methods area, perimeter, print, str, and repr.
+    """ WIDTH """
+    @property
+    def width(self):
+        return (self.__width)
 
-                """
+    @width.setter
+    def width(self, value):
+        if type(value) != int:
+            raise TypeError("width must be an integer")
+        if value < 0:
+            raise ValueError("width must be >= 0")
+        self.__width = value
 
-                    def __init__(self, width=0, height=0):
+    """ HEIGHT """
+    @property
+    def height(self):
+        return (self.__height)
 
-                                self. width  =  width
+    @height.setter
+    def height(self, value):
+        if type(value) != int:
+            raise TypeError("height must be an integer")
+        if value < 0:
+            raise ValueError("height must be >= 0")
+        self.__height = value
 
-                                        self. height  =  height
+    """ Rectangle area """
+    def area(self):
+        return (self.__height * self.__width)
 
+    """ Rectangle perimeter """
+    def perimeter(self):
+        if self.width == 0:
+            return (0)
+        if self.height == 0:
+            return (0)
+        return (2 * (self.__height + self.__width))
 
+    """ Returns printable string representation """
+    def __str__(self):
+        empty_string = ""
 
-                                            @property
+        if self.__width == 0 or self.__height == 0:
+            return (empty_string)
 
-                                                def width(self):
+        return ((('#' * self.width) + "\n") * self.height)[:-1]
 
-                                                            return  self. __width
-
-
-
-                                                            @width. setter
-
-                                                                def width(self, value):
-
-                                                                            if type(value) is not int:
-
-                                                                                            raise TypeError("width must be an integer")
-
-                                                                                                if value < 0:
-
-                                                                                                                raise ValueError("width must be >= 0")
-
-                                                                                                                    self. __width  =  value
-
-
-
-                                                                                                                        @property
-
-                                                                                                                            def height(self):
-
-                                                                                                                                        return  self. __height
-
-
-
-                                                                                                                                        @height. setter
-
-                                                                                                                                            def height(self, value):
-
-                                                                                                                                                        if type(value) is not int:
-
-                                                                                                                                                                        raise TypeError("height must be an integer")
-
-                                                                                                                                                                            if value < 0:
-
-                                                                                                                                                                                            raise ValueError("height must be >= 0")
-
-                                                                                                                                                                                                self. __height  =  value
-
-
-
-                                                                                                                                                                                                    def __repr__(self):
-
-                                                                                                                                                                                                                return  "Rectangle({:d}, {:d})". format(self. __width, self. __height)
-
-
-
-                                                                                                                                                                                                                def __str__(self):
-
-                                                                                                                                                                                                                            total = ""
-
-                                                                                                                                                                                                                                    for  i  in  range(self. __height):
-
-                                                                                                                                                                                                                                                    total  += ("#"  *  self. __width)
-
-                                                                                                                                                                                                                                                                if  i  is  not  self. __height  -  1:
-
-                                                                                                                                                                                                                                                                                    Total += "\n"
-
-                                                                                                                                                                                                                                                                                                return total
-
-                                                                                                                                                                                                                                                                                                
-
-                                                                                                                                                                                                                                                                                                def area(self):
-
-                                                                                                                                                                                                                                                                                                            return  self. __width  *  self. __height
-
-
-
-                                                                                                                                                                                                                                                                                                            def perimeter(self):
-
-                                                                                                                                                                                                                                                                                                                        if  self. __width  is  0  or  self. __height  is  0:
-
-                                                                                                                                                                                                                                                                                                                                        return 0
-
-                                                                                                                                                                                                                                                                                                                                            return (2  *  self. __width) + (2  *  self. __height)
-
-                                                                                                                                                                                                                                                                                                                                        Footer
-
-
+    """ Returns an “official” string representation of an instance """
+    def __repr__(self):
+        return ("Rectangle({:d}, {:d})".format(self.__width, self.__height))
