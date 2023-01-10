@@ -18,4 +18,4 @@ class Student:
             for nm in attrs:
                 if hasattr(self, nm):
                     dic[nm] = getattr(self, nm)
-                return (dic)
+            return (dic)
